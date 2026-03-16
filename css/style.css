@@ -1,36 +1,145 @@
-* {box-sizing: border-box;
-}
-h1,h2,h3{
-  text-align: center;
-  margin-top: 30px;
-}
-h2{
-  color:#1c47a9;
+* {
+  box-sizing: border-box;
+  font-family: Consolas, "Courier New", monospace; /* Authentic CMD font */
 }
 
-.err-msg{
-  text-align: center;
-  color:red;
+body {
+  background-color: #000000; /* Pitch black */
+  color: #cccccc; /* Classic CMD light gray text */
 }
 
+h1, h2, h3 {
+  text-align: left;
+  margin-top: 20px;
+  color: #cccccc;
+  font-weight: normal;
+}
+
+.err-msg {
+  text-align: left;
+  color: #ff5555; /* Muted red for errors */
+}
+
+.success-msg {
+  text-align: left;
+  color: #cccccc;
+}
+
+/* --- The CMD Window Box --- */
 .form-1 {
   margin: 50px auto;
-  padding-bottom: 30px;
-  border: 1px solid #09168d;
-  border-radius: 7px;
-  background: #fff;
-  width: 37%;
+  padding: 40px 20px 20px 20px; /* Extra top padding for the title bar */
+  border: 2px solid #cccccc; /* Classic window border */
+  background: #000000;
+  width: 40%;
+  position: relative;
 }
-p{
-  text-align: center;
+
+/* --- Fake Title Bar --- */
+.form-1::before {
+  content: "C:\\WINDOWS\\system32\\cmd.exe";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  background-color: #cccccc; /* Light gray title bar */
+  color: #000000;
+  padding: 2px 10px;
+  font-family: "Segoe UI", Arial, sans-serif; /* Standard Windows UI font */
+  font-size: 12px;
+  font-weight: bold;
 }
+
+p {
+  text-align: left;
+}
+
+/* --- Adding the C:\> Prompt to Labels --- */
+label {
+  display: block;
+  margin-top: 15px;
+  margin-bottom: 0;
+  color: #cccccc;
+}
+
+label::before {
+  content: "C:\\Users\\Guest> "; /* Makes every label look like a directory path */
+}
+
+/* --- Form Controls (Invisible Inputs) --- */
+.form-control {
+  background-color: #000000;
+  color: #cccccc;
+  border: none;
+  border-bottom: 1px solid #555555; /* Subtle underline to show where to type */
+  border-radius: 0;
+  padding: 5px 0;
+}
+
+.form-control:focus {
+  background-color: #000000;
+  color: #ffffff; /* Bright white when typing */
+  border-bottom: 1px solid #ffffff;
+  box-shadow: none;
+  outline: none;
+}
+
+.form-control::placeholder {
+  color: #555555;
+}
+
+/* --- Checkbox Styling --- */
 .check {
-  margin:  5px 0px;
-  width: 6%;
-  height: 20px;
-  }
+  margin: 15px 5px 5px 0px;
+  accent-color: #cccccc; 
+}
+
+/* --- Terminal-Style Buttons --- */
+.btn {
+  background-color: #000000;
+  color: #cccccc;
+  border: 1px solid #cccccc;
+  border-radius: 0;
+  font-family: Consolas, "Courier New", monospace;
+  margin-top: 15px;
+  text-transform: lowercase; /* Keeps the terminal vibe */
+}
+
+.btn:hover {
+  background-color: #cccccc;
+  color: #000000;
+}
+
+/* --- Links --- */
+a {
+  color: #cccccc;
+  text-decoration: underline;
+}
+
+a:hover {
+  color: #ffffff;
+  background-color: #333333; /* Highlights the link like text selection */
+  text-decoration: none;
+}
+
+/* --- Blinking Cursor Animation --- */
+.cursor {
+  display: inline-block;
+  width: 10px;
+  height: 18px;
+  background-color: #cccccc;
+  vertical-align: text-bottom;
+  animation: blink 1s step-end infinite;
+  margin-left: 2px;
+}
+
+@keyframes blink {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0; }
+}
+
 @media screen and (max-width: 700px) {
   .form-1 {
-    width: 80%; 
+    width: 90%; 
   }
 }
